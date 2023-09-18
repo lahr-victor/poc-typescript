@@ -2,8 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status';
 
 function errorHandler(error: Error, req: Request, res: Response, next: NextFunction): Response {
-  console.log(error);
-
   if (error.name === 'notFound') {
     return res.status(httpStatus.NOT_FOUND).send(error.message);
   }
