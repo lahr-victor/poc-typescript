@@ -11,4 +11,10 @@ booksRouter.post(
   booksController.create,
 );
 
+booksRouter.get(
+  '/books',
+  schemaValidator.query(bookSchema.readAll),
+  booksController.readAll,
+);
+
 export default booksRouter;

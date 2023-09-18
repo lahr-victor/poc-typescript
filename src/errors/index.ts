@@ -1,3 +1,10 @@
+function notFound(resource: string): Error {
+  return {
+    name: 'notFound',
+    message: `${resource} could not be found!`,
+  };
+}
+
 function unprocessable(resource: string[]): Error {
   return {
     name: 'unprocessable',
@@ -5,5 +12,5 @@ function unprocessable(resource: string[]): Error {
   };
 }
 
-const applicationError = { unprocessable };
+const applicationError = { notFound, unprocessable };
 export default applicationError;

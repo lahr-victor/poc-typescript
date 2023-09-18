@@ -8,3 +8,11 @@ export type Book = {
 };
 
 export type CreateBook = Omit<Book, 'id' | 'hasBeenRead'>;
+
+export type QueryParams = {
+  title?: string;
+  author?: string;
+  publisher?: string;
+  genre?: string;
+  hasBeenRead?: boolean;
+};

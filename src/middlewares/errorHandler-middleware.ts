@@ -2,6 +2,10 @@ import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status';
 
 function errorHandler(error: Error, req: Request, res: Response, next: NextFunction): Response {
+  if (error.name === 'notFound') {
+    return res.status(httpStatus.NOT_FOUND).send(error.message);
+  }
+
   if (error.name === 'unprocessable') {
     return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);
   }
