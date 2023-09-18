@@ -13,5 +13,14 @@ async function toggleHasBeenRead(id: string): Promise<Book> {
   return booksRepository.toggleHasBeenRead(id);
 }
 
-const booksService = { create, readAll, toggleHasBeenRead };
+async function remove(id: string): Promise<Book> {
+  return booksRepository.remove(id);
+}
+
+const booksService = {
+  create,
+  readAll,
+  toggleHasBeenRead,
+  remove,
+};
 export default booksService;

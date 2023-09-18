@@ -27,5 +27,17 @@ async function toggleHasBeenRead(req: Request, res: Response): Promise<Response>
   return res.sendStatus(httpStatus.OK);
 }
 
-const booksController = { create, readAll, toggleHasBeenRead };
+async function remove(req: Request, res: Response): Promise<Response> {
+  const id = req.query.id as string;
+  await booksService.remove(id);
+
+  return res.sendStatus(httpStatus.OK);
+}
+
+const booksController = {
+  create,
+  readAll,
+  toggleHasBeenRead,
+  remove,
+};
 export default booksController;

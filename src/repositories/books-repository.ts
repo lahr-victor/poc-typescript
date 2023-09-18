@@ -114,5 +114,26 @@ async function toggleHasBeenRead(id: string): Promise<Book> {
   return rows[0];
 }
 
-const booksRepository = { create, readAll, toggleHasBeenRead };
+async function remove(id: string): Promise<Book> {
+  const { rows } = await db.query<Book>(
+    `
+    DELETE
+    FROM
+      books 
+    WHERE
+      id = $1
+    ;    
+    `,
+    [id],
+  );
+
+  return rows[0];
+}
+
+const booksRepository = {
+  create,
+  readAll,
+  toggleHasBeenRead,
+  remove,
+};
 export default booksRepository;

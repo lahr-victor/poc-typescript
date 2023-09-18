@@ -22,4 +22,9 @@ booksRouter.put(
   booksController.toggleHasBeenRead,
 );
 
+booksRouter.delete(
+  '/books',
+  booksController.remove,
+);
+
 export default booksRouter;
