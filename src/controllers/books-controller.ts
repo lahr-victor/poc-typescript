@@ -20,5 +20,12 @@ async function readAll(req: Request, res: Response): Promise<Response> {
   return res.send(books).status(httpStatus.OK);
 }
 
-const booksController = { create, readAll };
+async function toggleHasBeenRead(req: Request, res: Response): Promise<Response> {
+  const id = req.query.id as string;
+  await booksService.toggleHasBeenRead(id);
+
+  return res.sendStatus(httpStatus.OK);
+}
+
+const booksController = { create, readAll, toggleHasBeenRead };
 export default booksController;

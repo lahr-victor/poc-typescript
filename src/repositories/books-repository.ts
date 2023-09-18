@@ -97,5 +97,22 @@ async function readAll({
   return rows;
 }
 
-const booksRepository = { create, readAll };
+async function toggleHasBeenRead(id: string): Promise<Book> {
+  const { rows } = await db.query<Book>(
+    `
+    UPDATE
+      books 
+    SET
+      "hasBeenRead" = NOT "hasBeenRead"
+    WHERE
+      id = $1
+    ;
+    `,
+    [id],
+  );
+
+  return rows[0];
+}
+
+const booksRepository = { create, readAll, toggleHasBeenRead };
 export default booksRepository;

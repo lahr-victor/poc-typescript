@@ -9,5 +9,9 @@ async function readAll(params: QueryParams): Promise<Book[]> {
   return booksRepository.readAll(params);
 }
 
-const booksService = { create, readAll };
+async function toggleHasBeenRead(id: string): Promise<Book> {
+  return booksRepository.toggleHasBeenRead(id);
+}
+
+const booksService = { create, readAll, toggleHasBeenRead };
 export default booksService;

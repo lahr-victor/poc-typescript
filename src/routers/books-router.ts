@@ -17,4 +17,9 @@ booksRouter.get(
   booksController.readAll,
 );
 
+booksRouter.put(
+  '/books',
+  booksController.toggleHasBeenRead,
+);
+
 export default booksRouter;
